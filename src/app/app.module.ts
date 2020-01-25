@@ -3,20 +3,30 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { RegisterService } from './register.service';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RegisterService } from './register.service';
+import { EmployeesComponent } from './employees/employees.component';
+import { DepartmentsComponent } from './departments/departments.component';
+import { ErrorComponent } from './error/error.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    EmployeesComponent,
+    DepartmentsComponent,
+    ErrorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +35,13 @@ import { RegisterService } from './register.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RegisterService],
+  providers: [RegisterService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true // use multiple interceptors if required
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

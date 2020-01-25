@@ -18,21 +18,24 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('token') !== null){
+
       this.registerService.getUserName().subscribe( data => {
+
         console.log(data);
-  
         this.username = data.toString();
-      },error => {
-        this.router.navigate(['/login']);
+
+      }, error => {
+        this.router.navigate(['/login'], { state: { error: 'error logging in' } });
       })
+
     } else {
       this.router.navigate(['/login']);
     }
   }
 
-  logout(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-  }
+  // logout(){
+  //   localStorage.removeItem('token');
+  //   this.router.navigate(['/login']);
+  // }
 
 }
