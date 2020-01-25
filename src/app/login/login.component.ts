@@ -21,17 +21,19 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required)
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   login(){
     console.log(this.loginForm.value);
     this.registerService.login(this.loginForm.value).subscribe(data => {
       console.log(data);
+
       this.responseObj = data;
       localStorage.setItem('token', data.toString());
       this.router.navigate(['./dashboard']);
+
     }, error => console.log(error));
   }
 

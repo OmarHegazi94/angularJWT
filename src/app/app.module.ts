@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { RegisterService } from './register.service';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { AuthguardGuard } from './authguard.guard';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -35,12 +36,13 @@ import { NavbarComponent } from './core/navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RegisterService,
+  providers: [RegisterService, AuthguardGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true // use multiple interceptors if required
-    }
+    }, 
+    
   ],
   bootstrap: [AppComponent]
 })

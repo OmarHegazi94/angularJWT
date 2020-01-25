@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,28 +9,23 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  username:string;
+  username: string;
 
   constructor(
     private registerService: RegisterService,
-    private router: Router
-    ) { }
+    // private router: Router
+  ) { }
 
   ngOnInit() {
-    if(localStorage.getItem('token') !== null){
 
-      this.registerService.getUserName().subscribe( data => {
+    this.registerService.getUserName().subscribe(data => {
+      console.log(data);
+      this.username = data.toString();
+    }, error => {
+      console.log(error);
+    })
 
-        console.log(data);
-        this.username = data.toString();
 
-      }, error => {
-        this.router.navigate(['/login'], { state: { error: 'error logging in' } });
-      })
-
-    } else {
-      this.router.navigate(['/login']);
-    }
   }
 
   // logout(){

@@ -9,7 +9,7 @@ export class RegisterService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    // private router: Router
   ) { }
 
   commonUrl: string = 'http://localhost:8080/users/';
