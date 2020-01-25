@@ -1,0 +1,38 @@
+<div class="card bg-light d-flex justify-content-center align-items-center">
+
+    <article class="card-body mx-auto" style="width: 400px;">
+        <h4 class="card-title mt-3 text-center">Create an Account</h4>
+        <p class="text-center">Get started with your free account</p>
+
+        <form [formGroup]="registerForm">
+            <div class="form-group input-group">
+                <input formControlName="username" name="" class="form-control" placeholder="User Name" type="text">
+            </div> <!-- End form-group -->
+
+            <div class="form-group input-group">
+                <input formControlName="email" name="" class="form-control" placeholder="Email address" type="email">
+            </div> <!-- End form-group -->
+
+            <div class="form-group input-group">
+                <input formControlName="password" class="form-control" placeholder="Create password" type="password">
+            </div> <!-- End form-group -->
+
+            <!-- <div class="form-group input-group">
+                <input class="form-control" placeholder="Repeat password" type="password">
+            </div> End form-group -->
+
+            <div class="form-group">
+                <button (click)="register()" type="submit" class="btn btn-primary btn-block"> Create Account </button>
+            </div> <!-- End form-group -->
+
+            <div *ngIf="message" class="alert alert-success">
+                <span>
+                    {{ message }}
+                </span>
+            </div>
+
+            <p class="text-center">Have an account? <a routerLink="/login">Login</a> </p>
+        </form>
+    </article>
+
+</div> <!-- card -->

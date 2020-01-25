@@ -1,0 +1,28 @@
+<div class="card bg-light d-flex justify-content-center align-items-center">
+
+    <article class="card-body mx-auto" style="width: 400px;">
+        <h4 class="card-title mb-5 mt-2 text-center">Login to your Account</h4>
+        <!-- <p class="text-center">Get started with your free account</p> -->
+
+        <form [formGroup]="loginForm">
+            <span *ngIf="responseObj" class="d-flex justify-content-center mb-3 text-danger font-weight-bold">{{ responseObj.message }}</span>
+
+            <div class="form-group input-group">
+                <input formControlName="email" name="" class="form-control" placeholder="Email address" type="email">
+            </div> <!-- End form-group -->
+
+
+            <div class="form-group input-group">
+                <input formControlName="password" class="form-control" placeholder="Enter your password" type="password">
+            </div> <!-- End form-group -->
+
+
+            <div class="form-group">
+                <button (click)="login()" type="submit" class="btn btn-primary btn-block"> Login </button>
+            </div> <!-- End form-group -->
+
+            <p class="text-center">Don't Have an account? <a routerLink="/register">Register</a> </p>
+        </form>
+    </article>
+
+</div> <!-- card -->
