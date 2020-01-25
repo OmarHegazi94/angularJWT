@@ -5,7 +5,7 @@
         <!-- <p class="text-center">Get started with your free account</p> -->
 
         <form [formGroup]="loginForm">
-            <span *ngIf="responseObj" class="d-flex justify-content-center mb-3 text-danger font-weight-bold">{{ responseObj.message }}</span>
+            <span *ngIf="responseObj" class="d-flex justify-content-center mb-3 text-danger font-weight-bold">{{ responseObj }}</span>
 
             <div class="form-group input-group">
                 <input formControlName="email" name="" class="form-control" placeholder="Email address" type="email">

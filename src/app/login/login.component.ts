@@ -28,11 +28,18 @@ export class LoginComponent implements OnInit {
   login(){
     console.log(this.loginForm.value);
     this.registerService.login(this.loginForm.value).subscribe(data => {
+      
       console.log(data);
 
-      this.responseObj = data;
-      localStorage.setItem('token', data.toString());
-      this.router.navigate(['./dashboard']);
+      if(data.token && data.Username) {
+
+        this.responseObj = data;
+        localStorage.setItem('token', data.token.toString());
+        this.router.navigate(['./dashboard']);
+
+      } else if(data.message) {
+        this.responseObj = data.message;
+      }
 
     }, error => console.log(error));
   }
